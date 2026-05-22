@@ -24,10 +24,10 @@ public class MainApp {
 
       userService.add(new User("User5", "Lastname5", "user5@mail.ru",
               new Car("VW", 6)));
-      userService.add(new User("User6", "Lastname6", "user6@mail.ru",
-              new Car("Lada", 2121)));
-      userService.add(new User("User7", "Lastname7", "user7@mail.ru",
-              new Car("Skoda", 331)));
+//      userService.add(new User("User6", "Lastname6", "user6@mail.ru",
+//              new Car("Lada", 2121)));
+//      userService.add(new User("User7", "Lastname7", "user7@mail.ru",
+//              new Car("Skoda", 331)));
 
       List<User> users = userService.listUsers();
       for (User user : users) {
@@ -41,10 +41,10 @@ public class MainApp {
 
       User user = userService.getUserByCar("VW", 6);
       System.out.println(user.toString());
-      User user2 = userService.getUserByCar("Lada", 2121);
-      System.out.println(user2.toString());
-      User user3 = userService.getUserByCar("Skoda", 331);
-      System.out.println(user3.toString());
+//      User user2 = userService.getUserByCar("Lada", 2121);
+//      System.out.println(user2.toString());
+//      User user3 = userService.getUserByCar("Skoda", 331);
+//      System.out.println(user3.toString());
 
       context.close();
    }
