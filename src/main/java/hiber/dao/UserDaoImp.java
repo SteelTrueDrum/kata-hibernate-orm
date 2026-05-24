@@ -2,12 +2,12 @@ package hiber.dao;
 
 import hiber.model.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserDaoImp implements UserDao {
@@ -29,15 +29,18 @@ public class UserDaoImp implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public User getUserByCar(String model, int series) {
-        Query<User> query = sessionFactory.getCurrentSession()
+    public Optional<User> getUserByCar(String model, int series) {
+        List<User> results = sessionFactory.getCurrentSession()
                 .createQuery("select u from User u where u.car.model = :model and u.car.series = :series", User.class)
                 .setParameter("model", model)
-                .setParameter("series", series);
-        List<User> results = query.getResultList();
+                .setParameter("series", series)
+                .getResultList();
+
+        // Возвращаем Optional с пользователем или пустой Optional
+        return results.stream().findFirst();
 
         // Если список пуск - возвращаем null, иначе - первый элемент
-        return results.isEmpty() ? null : results.get(0);
+//        return results.isEmpty() ? null : results.get(0);
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
@@ -24,8 +25,8 @@ public class MainApp {
 
       userService.add(new User("User5", "Lastname5", "user5@mail.ru",
               new Car("VW", 6)));
-//      userService.add(new User("User6", "Lastname6", "user6@mail.ru",
-//              new Car("Lada", 2121)));
+      userService.add(new User("User6", "Lastname6", "user6@mail.ru",
+              new Car("Lada", 2121)));
 //      userService.add(new User("User7", "Lastname7", "user7@mail.ru",
 //              new Car("Skoda", 331)));
 
@@ -39,10 +40,10 @@ public class MainApp {
          System.out.println();
       }
 
-      User user = userService.getUserByCar("VW", 6);
-      System.out.println(user.toString());
-//      User user2 = userService.getUserByCar("Lada", 2121);
-//      System.out.println(user2.toString());
+//      Optional<User> user = userService.getUserByCar("VW", 6);
+//      System.out.println(user.toString());
+      Optional<User> user2 = userService.getUserByCar("Lada", 2121);
+      System.out.println(user2.toString());
 //      User user3 = userService.getUserByCar("Skoda", 331);
 //      System.out.println(user3.toString());
 
